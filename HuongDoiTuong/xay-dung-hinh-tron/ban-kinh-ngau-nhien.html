@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<p>vẽ đường tròn có bán kinh ngẫu nhiên</p>
+	<canvas id="myCanvas" width="1300px" height="500px" style="border:5px solid #d3d3d3;">	</canvas>
+	<script type="text/javascript">
+		function hinhTron(x,y,bankinh){
+			this.x = x;
+			this.y = y;
+			this.bankinh = bankinh;
+		}
+		function taoHinhTron(){
+			var valueCanvas = document.getElementById('myCanvas').getContext("2d");
+			//random bán kính
+			var set_BanKinh = Math.floor(Math.random()*100);
+			var hinh_Tron = new hinhTron(500,300,80);
+			//var set_BanKinh = hinh_Tron(bankinh);
+			valueCanvas.arc(hinh_Tron.x, hinh_Tron.y, set_BanKinh, 0 , 2*Math.PI);
+			//vẽ ra
+			valueCanvas.fill();
+		}
+		taoHinhTron();
+	</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div>
+		<p id="sotao"></p>
+	</div>
+	<div>
+		<h3>Adam</h3>
+		<p id="ten"></p>
+		<p id="gioitinh"></p>
+		<p id="cannang"></p>
+		<button onclick="anTao()">Adam ăn Táo</button>
+	</div>
+	<div>
+		<h3>Eva</h3>
+		<p id="ten1"></p>
+		<p id="gioitinh1"></p>
+		<p id="cannang1"></p>
+		<button onclick="anTao1()">Eva ăn Táo</button>
+	</div>
+	<script type="text/javascript">
+		class Apple{
+			constructor(weight){
+				this.weight = weight;
+			}
+			descrease(){
+				return this.weight --;
+			}
+			isEmpty(){
+				if(this.weight > 0){
+					return this.weight;
+				}else alert("Vui lòng bổ sung thêm táo");
+			}
+			resetApple(){
+				return this.weight = 10;
+			}
+			// check(){
+			// 	if(this.weight) return this.weight;
+			// 	else alert("het");
+			// }
+			getApple(){
+				return this.weight;
+			}
+		}
+		class Human extends Apple{
+			constructor(weight,name,gender,humanWeight){
+				super(weight);
+				this.name = name;
+				this.gender = gender;
+				this.humanWeight = humanWeight;
+			}
+			isMale(){
+				if(this.gender){
+					return this.gender = "Nam";
+				}else{
+					return this.gender = "Nữ";
+				}
+			}
+			setGender(){
+				if (this.gender) {
+					this.gender = false;
+				}else{
+					this.gender = true;
+				}
+			}
+			say(){
+				console.log("Xin Chao");
+			}
+			eat(){
+				return this.humanWeight +=1;
+			}
+		}
+		var apple = new Apple(10);
+		document.getElementById("sotao").innerHTML = "Số táo hiện tại " + apple.getApple(); 
+		//apple.getApple();
+		var adam = new Human(10,"Adam",true,66);
+		//human.isMale();
+		//human.isEmpty();
+		document.getElementById("ten").innerHTML ="Tên là " +adam.name;
+		document.getElementById("gioitinh").innerHTML ="Giới tính " +adam.isMale();
+		document.getElementById("cannang").innerHTML ="Cân nặng " +adam.humanWeight;
+		function anTao(){
+			if(apple.weight > 0){
+				//apple.weight - 1;
+				document.getElementById("sotao").innerHTML = "Số táo còn lại " + (apple.descrease()-1);
+				document.getElementById("cannang").innerHTML = adam.eat();
+				adam.say();
+			}else  {
+				document.getElementById("sotao").innerHTML = "Vui lòng bổ sung thêm táo ";
+				apple.resetApple();				
+			}
+
+		}
+		var eva = new Human(10,"Eva",false,50);
+		document.getElementById("ten1").innerHTML ="Tên là " +eva.name;
+		document.getElementById("gioitinh1").innerHTML ="Giới tính " +eva.isMale();
+		document.getElementById("cannang1").innerHTML ="Cân nặng " +eva.humanWeight;
+		function anTao1(){
+			if(apple.weight > 0){
+				//apple.weight - 1;
+				document.getElementById("sotao").innerHTML = "Số táo còn lại " + (apple.descrease()-1);
+				document.getElementById("cannang1").innerHTML = eva.eat();
+				eva.say();
+			}else  {
+				document.getElementById("sotao").innerHTML = "Vui lòng bổ sung thêm táo ";
+				apple.resetApple();				
+			}
+		}
+	</script>
+</body>
+</html>

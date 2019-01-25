@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<p>Chu vi<p id="chuvi"></p></p>
+	<p>Diện tích<p id="dientich"></p></p>
+	<canvas id="myCanvas" width="1300px" height="500px" style="border:5px solid #d3d3d3;">	
+	<script type="text/javascript">
+		function Rectangle(x,y,width,height){
+			this.x = x;
+			this.y = y;
+			this.width = width;
+			this.height = height;
+			// this.getHinhChuNhat = function(){
+			// 	return width;
+			// 	return height;
+			// }
+			this.chuVi = function(){
+				return (width+height)*2;
+			}
+			this.dienTich = function(){
+				return width*height;
+			}
+		};
+		function creatRectangle(){
+			var valueCanvas = document.getElementById('myCanvas').getContext("2d");
+			var set_width = Math.floor(Math.random()*500);
+			var set_height = Math.floor(Math.random()*300);
+			valueCanvas.beginPath();
+			var rectangle = new Rectangle(100,100,100,50);
+			// var chu_Vi = rectangle.chuVi();
+			// var dienTich = rectangle.dienTich();
+			// document.getElementById("chuvi").innerHTML = chu_Vi;
+			// document.getElementById("dientich").innerHTML = dienTich;
+			// alert("chu vi = "+chu_Vi + "<br>" + "diện tích = "+dienTich);
+			valueCanvas.fillStyle = "#ffb3b3";
+			//rect truyền vào 4 giá trị :x y là tọa độ
+			valueCanvas.rect(rectangle.x,rectangle.y,set_width,set_height);
+			valueCanvas.fill();
+		}
+		creatRectangle();
+		// var chu_Vi = rectangle.chuVi();
+		// var dienTich = rectangle.dienTich();
+		// alert("chu vi = "+chu_Vi + "<br>" + "diện tích = "+dienTich);
+	</script>
+</body>
+</html>

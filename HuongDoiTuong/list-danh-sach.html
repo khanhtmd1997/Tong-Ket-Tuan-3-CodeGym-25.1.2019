@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="add">
+			<div class="title">
+				<p>Thêm mới</p>
+			</div>
+			<div class="form">
+				<input type="text" id="valueProduct">
+				<button class="btn btn-primary" onclick="addProduct()">Add</button>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div>
+			<h3>Danh sách Product Gồm: <p id="tongTen"></p></h3>
+			<table class="table">
+ 				 <thead>
+				    <tr>
+				      <th scope="col">Tên</th>
+				      <th scope="col">Action</th>
+				      
+				    </tr>
+  				</thead>
+  				<tbody id="list">
+				   <!--  <tr>
+				      	<th scope="row">1</th>
+				      	<td><input type="button" class="btn btn-primary" value="Edit" id="EditProduct()">
+				      	  <input type="button" class="btn btn-dark" value="Delete" id="DeleteProduct()">
+				      	</td>
+				    </tr> -->
+  				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div id="edit">
+			<!-- <div class="title">
+				<p>Sửa</p>
+			</div>
+			<div class="form">
+				<input type="text" id="valueEditProduct">
+				<button class="btn btn-primary" onclick="suaProduct()">Sửa</button>
+			</div> -->
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var listProduct = ["khánh","HUấn","Long","Danh"];
+		var result = document.getElementById('list');
+		showProduct(listProduct);
+		function showProduct(arrayProduct){
+			var data = "";
+			var count = 0;
+			for(var i = 0; i < arrayProduct.length;i++){
+				count++;
+				data += "<tr>"+
+				      	"<th scope='row' id='showValue'>"+ arrayProduct[i] +"</th>"+
+				      	"<td>"+"<input type='button' class='btn btn-primary' value='Edit' onclick='showEditProduct("+i+")'>"+
+				      	  "<input type='button' class='btn btn-dark' value='Delete' onclick='deleteProduct("+i+")'>"+
+				      	"</td>"+
+				    "</tr>";
+
+			}
+			if (count == 1) document.getElementById("tongTen").innerHTML = count + " product";
+			else document.getElementById("tongTen").innerHTML = count + " products";
+			
+			result.innerHTML = data;
+		}
+		function deleteProduct(index){
+			listProduct.splice(index,1);
+			showProduct(listProduct);
+		}
+		function showEditProduct(index){
+			var data = "";
+			var result = document.getElementById('edit');
+			data += "<input type='text' id='valueEditProduct' value='"+listProduct[index]+"'>"+
+			"<button class='btn btn-primary' onclick='EditProduct("+index+")'>Sửa</button>";
+			// var text = document.getElementById('valueEditProduct').value = listProduct[index];
+			result.innerHTML = data;
+		}
+		function EditProduct(index){
+			listProduct[index] = document.getElementById('valueEditProduct').value;
+			showProduct(listProduct);
+			closeInputEdit();
+		}
+		function addProduct(productAdd){
+			var add = document.getElementById("valueProduct");
+			var valueAdd = add.value;
+			if(valueAdd){
+				listProduct.push(valueAdd.trim());
+				add.value = "";
+				showProduct(listProduct);
+
+			}
+			// var data = "";
+			// var result = document.getElementById("add");
+			// data += "<div class='title'>" + "<p>Thêm mới</p>" + "</div>" +"<div class='form'>" +
+			// 	"<input type='text' id='valueAddProduct'>"+"<button class='btn btn-primary' onclick='addProduct()'>Add</button>" + "</div>";
+			
+		}
+		function closeInputEdit(){
+			//ẩn thẻ input khi edit xong
+			document.getElementById("edit").style.display = "none";
+		}
+	</script>
+</body>
+</html>

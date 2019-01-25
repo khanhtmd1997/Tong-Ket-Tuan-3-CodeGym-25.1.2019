@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		class Shape{
+			constructor(chieudai,chieurong,type){
+				this.chieudai = chieudai;
+				this.chieurong = chieurong;
+				this.type = type;
+			}
+			getDienTich(){
+				alert("Hình chưa biết")
+			}
+			getChuVi(){
+				return
+			}
+		}
+		class HinhVuong extends Shape{
+			constructor(type,canh){
+				super(type);
+				this.canh = canh;
+			}
+			getDienTich(){
+				return this.canh * this.canh;
+			}
+			// getchuVi(){
+			// 	alert("chu vi = " + (this.canh * 4));
+			// }
+		}
+		var shape1 = new Shape(10,20,"hình");
+		alert(shape1.type);
+		shape1.getDienTich();
+		var hinhVuong = new HinhVuong("Hình vuông",20);
+		alert(hinhVuong.getDienTich());
+		// hinhVuong.getChuVi();
+	</script>
+</body>
+</html>

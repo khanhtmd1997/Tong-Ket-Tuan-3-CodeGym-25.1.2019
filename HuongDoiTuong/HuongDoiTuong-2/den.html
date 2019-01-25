@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<p id="congtat"></p>
+	<p id="trangthaiden"></p>
+	<input type="button" value="BatCongTat" onclick="Bat(this.value)">
+	<!-- <input type="button" value="TatCongTat" onclick="Tat(this.value)"> -->
+	<script type="text/javascript">
+		class ElectricLamp{
+			constructor(status){
+				this.status = status;
+			}
+			turnOn(){
+				return this.status = true;
+			}
+			turnOff(){
+				return this.status = false;
+			}
+			checkElec(){
+				if(this.status) document.getElementById("trangthaiden").innerHTML = "Đèn đang sáng";
+				else document.getElementById("trangthaiden").innerHTML = "Đèn đang tắt";
+			}
+		}
+		class SwitchButton extends ElectricLamp{
+			constructor(status,lamp){
+				super(status);
+				this.lamp = lamp;
+			}
+			connectToLamp(){
+				return this.status;
+			}
+			switchOn(){
+				return this.lamp = true;
+			}
+			switchOff(){
+				return this.lamp = false;
+			}
+			checkButton(){
+				if(this.lamp) {
+					document.getElementById("congtat").innerHTML = "Công tắt đang bật";
+					document.getElementById("trangthaiden").innerHTML = "Đèn đang sáng";
+					
+				}
+				else{  
+					document.getElementById("congtat").innerHTML = "Công tắt đang tắt";
+					document.getElementById("trangthaiden").innerHTML = "Đèn đang tắt";
+				}
+			}
+			check(){
+				if(this.lamp){
+					this.lamp = false;
+					
+				}else{
+					this.lamp = true;
+					
+				}
+			}
+		}
+		var electricLamp = new ElectricLamp(false);
+		var switchButton = new SwitchButton (false,false);
+		switchButton.connectToLamp();
+		document.getElementById("congtat").innerHTML = electricLamp.status;
+		document.getElementById("trangthaiden").innerHTML = switchButton.lamp;
+		function Bat(value){
+			if(value === "BatCongTat"){
+				if(switchButton.check());
+			}
+			switchButton.checkButton();
+		}
+
+	</script>
+</body>
+</html>

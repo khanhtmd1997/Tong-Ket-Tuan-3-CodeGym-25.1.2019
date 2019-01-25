@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		function Temperature(c){
+			this.c = c;
+			this.CsangF = function(){
+				if(c > -273){
+				return f = c*1.8 + 32;
+				}else return 0;
+			}
+			this.CsangK = function(){
+
+				return k = c + 273.15
+			}
+		};
+		var temperature = new Temperature(-285);
+		var resultC_F = temperature.CsangF();
+		var resultC_K = temperature.CsangK();
+		document.write("Độ C sang độ F = " +resultC_F + "<br/>" + "Độ C sang độ K = " + resultC_K);
+	</script>
+</body>
+</html>

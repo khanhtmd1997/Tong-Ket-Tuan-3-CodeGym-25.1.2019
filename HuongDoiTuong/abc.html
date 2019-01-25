@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body onload="load()">
+	<p id="tendienthoai"></p>
+	<p id="hienthipin"></p>
+	<p id="trangthaiDT"></p>
+	<p id="nhantinnhan"></p>
+	<p id="nhantindi"></p>
+	<!-- <input type="text" id="soantinnhan"> -->
+	<script type="text/javascript">
+		class Mobile{
+			constructor(ten,pin,trangthai,hopthuden,hopthudi){
+				this.ten = ten;
+				this.pin = pin;
+				this.trangthai = trangthai;
+				this.hopthuden = [];
+				this.hopthudi = [];
+			}
+			tenDienThoai(){
+				return this.ten;
+			}
+			Pin(){
+				return this.pin;
+			}
+			batTat(battat){
+				if(battat) this.trangthai = false;
+				else this.trangthai = true;
+				return this.trangthai;
+				this.pinTru();
+			}
+			trangThaiDT(){
+				return this.trangthai;
+			}
+			sacPin(){
+				if(this.pin <= 20){
+					while(this.pin < 100){
+						this.pin +=1;
+					}
+				}
+				return this.pin;
+			}
+			tinDen(nguoigui,mess){
+				if(this.trangthai){
+				document.write(nguoigui + mess + "<br>");
+				this.hopthuden.push(mess);
+				return this.pinTru();
+				//return this.hopthuden;
+				}
+			}
+			tinDi(nguoinhan,messenger){
+				if(this.trangthai){
+					document.write(nguoinhan + messenger + "<br>");
+					this.hopthudi.push(messenger);
+					return this.pinTru();
+				}
+
+			}
+			pinTru(){
+				this.pin --;
+				return this.pin;
+			}
+			
+		}
+		function load(){
+			var mobile = new Mobile("Nokia",21,true,"Soạn Tin Nhắn");
+			var tenDT = mobile.tenDienThoai();
+			var Pin = mobile.Pin();
+			var trangThai_BatTat = mobile.batTat(false);
+			var hienThiPinSac = mobile.sacPin();
+			document.getElementById('tendienthoai').innerHTML = tenDT;
+			document.getElementById('trangthaiDT').innerHTML = trangThai_BatTat;
+			document.getElementById('hienthipin').innerHTML = hienThiPinSac;
+			//document.write(mobile.pinTru);
+			document.write("Hộp thư đến"+"<br>");
+			mobile.tinDen("Iphone","Chào Nokia");
+			mobile.tinDen("Iphone","Chào Nokia");
+			mobile.tinDen("Iphone","Chào Nokia");
+			mobile.tinDen("Iphone","Chào Nokia");
+			document.write("Hộp thư đi"+"<br>");
+			mobile.tinDi("Nokia","Chào Iphone");
+			mobile.tinDi("Nokia","Chào Iphone");
+			mobile.tinDi("Nokia","Chào Iphone");
+			mobile.tinDi("Nokia","Chào Iphone");
+
+		}
+	</script>
+</body>
+</html>

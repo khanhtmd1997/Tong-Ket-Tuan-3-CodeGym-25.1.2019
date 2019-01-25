@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<p id="thongbao"></p>
+	<input type="button" onclick="BatChuot(this.value)" value="BatChuotNe">
+	<script type="text/javascript">
+		class dongVat{
+			constructor(ten,khoiluong,tocdo,tiengkeu){
+				this.ten = ten;
+				this.khoiluong = khoiluong;
+				this.tocdo = tocdo;
+				this.tiengkeu = tiengkeu;
+			}
+		}
+		class Rat extends dongVat{
+			constructor(ten,khoiluong,tocdo,tiengkeu,trangthai){
+				super(ten,khoiluong,tocdo,tiengkeu);
+				this.trangthai = trangthai;
+			}
+			isCheck(){
+				if(this.trangthai){
+					alert("nó còn sống!!! chạy nhanh hơn nữa đi!!!");
+				}else{
+					alert("nó đã chết");
+				}
+			}
+			chuotBiBat(){
+				if(this.trangthai) this.trangthai = false;
+				else this.trangthai = true;
+			}
+		}
+		class Cat extends dongVat{
+			constructor(ten,khoiluong,tocdo,tiengkeu){
+				super(ten,khoiluong,tocdo,tiengkeu);
+			}
+			// Bat(){
+			// 	if(this.tocdo >)
+			// }
+			
+		}
+		var rat = new Rat("Mickey",10,50,"chít,chít",true);
+		//alert(rat.tocdo);
+		var cat = new Cat("Mèo",20,30,"meow,meow");
+		function BatChuot(value){
+			if(value==="BatChuotNe"){
+				if(cat.tocdo > rat.tocdo){
+					document.getElementById('thongbao') = "Yeah!! Bắt được rồi" + rat.chuotBiBat();				
+				}
+				rat.isCheck();
+			}
+		}
+	</script>
+</body>
+</html>

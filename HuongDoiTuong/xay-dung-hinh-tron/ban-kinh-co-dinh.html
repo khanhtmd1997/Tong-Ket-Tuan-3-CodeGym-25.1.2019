@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<p>vẽ đường tròn có bán kinh cố định</p>
+	<canvas id="myCanvas" width="1300px" height="500px" style="border:5px solid #d3d3d3;">	</canvas>
+	<script type="text/javascript">
+		function hinhTron(x,y,bankinh){
+			this.x = x;
+			this.y = y;
+			this.bankinh = bankinh;
+		}
+		function taoHinhTron(){
+			var valueCanvas = document.getElementById('myCanvas').getContext("2d");
+			var hinh_Tron = new hinhTron(200,300,50);
+			//valueCanvas.beginPath();
+			valueCanvas.arc(hinh_Tron.x, hinh_Tron.y, hinh_Tron.bankinh, 0 , 2*Math.PI);
+			//vẽ ra
+			valueCanvas.fill();
+		}
+		taoHinhTron();
+	</script>
+</body>
+</html>

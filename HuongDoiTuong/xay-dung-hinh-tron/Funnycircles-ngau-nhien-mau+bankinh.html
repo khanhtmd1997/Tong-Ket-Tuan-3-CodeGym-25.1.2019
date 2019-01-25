@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<canvas id="myCanvas" width="1300px" height="500px" style="border:5px solid #d3d3d3;">	
+<script type="text/javascript">
+		function hinhTron(x,y,bankinh){
+			this.x = x;
+			this.y = y;
+			this.bankinh = bankinh;
+		}
+		function getColor(){
+			return Math.floor(Math.random()*255);
+		}
+		function getRandomColor(){
+			var red = getColor();
+			var blue = getColor();
+			var green = getColor();
+			return "rgb(" + red + "," + blue + "," + green +")";
+		}
+		function taoHinhTron(){
+			var valueCanvas = document.getElementById('myCanvas').getContext("2d");
+			//random bán kính
+			var set_BanKinh = Math.floor(Math.random()*100);
+			var color = getRandomColor();
+			var hinh_Tron = new hinhTron(800,100,100);
+			//var set_BanKinh = hinh_Tron(bankinh);
+			valueCanvas.arc(hinh_Tron.x, hinh_Tron.y, set_BanKinh, 0 , 2*Math.PI);
+			valueCanvas.fillStyle = color;
+			//vẽ ra
+			valueCanvas.fill();
+		}
+		taoHinhTron();
+	</script>
+</body>
+</html>

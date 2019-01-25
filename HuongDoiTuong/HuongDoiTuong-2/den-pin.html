@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		class Battery{
+			constructor(energy){
+				this.energy = energy;
+			}
+			setEnergy(){
+				return this.energy;
+			}
+			getEnergy(){
+				return this.energy;
+			}
+			decreaseEnergy(){
+				this.energy --;
+				return this.energy;
+			}
+		}
+		class FlashLamp extends Battery{
+			constructor(energy,status,battery){
+				super(energy);
+				this.status = status;
+				this.battery = battery;
+				
+			}
+			setBattery(){
+				return this.battery;
+			}
+			getBatteryInfo(){
+				return this.battery;
+			}
+			light(){
+				if(this.status) document.write("Light!!!");
+				else document.write("Not Light!!!");
+			}
+			turnOn(){
+				this.status = true;
+			}
+			turnOff(){
+				this.status = false;
+			}
+		}
+		var battery_ = new Battery(10);
+		//battery_.setEnergy(10);
+		//alert(battery_.getEnergy());
+		//battery_.getEnergy();
+		var flashLamp = new FlashLamp("Light",true,10);
+		flashLamp.setBattery(this.battery);
+		document.write("Turn on<br/>");
+		document.write("Battery info:" + flashLamp.getBatteryInfo() + "<br/>");
+		flashLamp.turnOn();
+		flashLamp.light();
+		document.write("<br/>");
+		document.write("Battery info:" + flashLamp.getBatteryInfo() + "<br/>");
+		document.write("Turn off<br>");
+		flashLamp.turnOff();
+		flashLamp.light();
+	</script>
+</body>
+</html>

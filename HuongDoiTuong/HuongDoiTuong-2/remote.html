@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div style="margin:250px 450px;">
+		<img src="tivi.jpg" style="position: relative;">
+		<h1 style="color: red">TiVi 1000in Siêu Mỏng :))</h1>
+		<p id="tt"></p>
+		<p id="kenhhientai"></p>
+		<p id="amluonghientai"></p>
+		<input type="button" value="O" onclick="BatTatTiVi(this.value)">
+		<input type="button" value="tangkenh" onclick="BatTatTiVi(this.value)">
+		<input type="button" value="giamkenh" onclick="BatTatTiVi(this.value)">
+		<input type="button" value="tangamluong" onclick="BatTatTiVi(this.value)">
+		<input type="button" value="giamamluong" onclick="BatTatTiVi(this.value)">
+	</div>
+	<script type="text/javascript">
+		class Remote{
+			constructor(ma){
+				this.ma = ma;
+			}
+		}
+		class Tivi extends Remote{
+			constructor(ma,kenh,amluong,trangthai){
+				super(ma);
+				this.kenh = kenh;
+				this.amluong = amluong;
+				this.trangthai = trangthai;
+			}
+			chuyenKenhLen(){
+				return this.kenh += 1;
+			}
+			chuyenKenhXuong(){
+				return this.kenh -= 1;
+			}
+			tangAmLuong(){
+				return this.amluong +=1;
+			}
+			giamAmLuong(){
+				return this.amluong -=1;
+			}
+			TrangThai(){
+				if(this.trangthai){
+					document.getElementById("tt").innerHTML = "Tivi đã bật";
+					document.getElementById("kenhhientai").innerHTML = "Kênh hiện tại "+tivi.kenh;
+					document.getElementById("amluonghientai").innerHTML ="Âm lương hiện tại " +  tivi.amluong;
+				}else {
+					document.getElementById("tt").innerHTML = "Tivi dã tắt!! Vui lòng bật lại tivi";
+					document.getElementById("kenhhientai").innerHTML = "";
+					document.getElementById("amluonghientai").innerHTML = "";
+				}
+			}
+			batTatTivi(){
+				if(this.trangthai){
+					this.trangthai = false;
+				}else{
+					this.trangthai = true;
+				}
+			}
+			// reset(){
+			// 	if(trangthai == false){
+			// 		document.getElementById("tt").innerHTML = "Tivi dã tắt!! Vui lòng bật lại tivi";
+					
+			// 	}
+			// }
+		}
+		var remote = new Remote(1);
+		var tivi = new Tivi(1,1,20,false);
+		tivi.TrangThai();
+		function BatTatTiVi(value){
+			if(value === "O"){
+				if(remote.ma === 1){
+					tivi.batTatTivi();
+				}
+				tivi.TrangThai();
+			}
+			else if (value === "tangkenh" && remote.ma === 1 && tivi.trangthai === true) {
+				if(tivi.kenh < 50) {
+					tivi.chuyenKenhLen();
+				}
+				document.getElementById("kenhhientai").innerHTML ="Kênh hiện tại " + tivi.kenh;
+			}
+			else if (value === "giamkenh" && remote.ma === 1  && tivi.trangthai === true) {
+				if(tivi.kenh > 0) {
+					tivi.chuyenKenhXuong();
+				}
+				document.getElementById("kenhhientai").innerHTML ="Kênh hiện tại " + tivi.kenh;
+			}
+			else if(value ==="tangamluong" && remote.ma === 1 && tivi.trangthai ===true){
+				if(tivi.amluong < 100){
+					tivi.tangAmLuong();
+				}
+				document.getElementById("amluonghientai").innerHTML ="Âm lương hiện tại " + tivi.amluong;
+			}
+			else if(value ==="giamamluong" && remote.ma === 1 && tivi.trangthai ===true){
+				if(tivi.amluong > 0){
+					tivi.giamAmLuong();
+				}
+				document.getElementById("amluonghientai").innerHTML ="Âm lương hiện tại " + tivi.amluong;
+			}
+		}
+	</script>
+</body>
+</html>

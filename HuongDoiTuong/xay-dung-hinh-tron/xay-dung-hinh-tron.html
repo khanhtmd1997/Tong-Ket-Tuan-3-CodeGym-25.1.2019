@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		var hinhTron = function(bankinh){
+			this.getHinhTron = function(){
+				return bankinh;
+			}
+			this.chuVi = function(){
+				return Math.PI * bankinh * 2;
+			}
+			this.areaHinhTron = function(){
+				return Math.PI * bankinh * bankinh;
+			}
+		};
+		var hinh_Tron = new hinhTron(4);
+		var chu_Vi = hinh_Tron.chuVi();
+		var get_HinhTron = hinh_Tron.getHinhTron();
+		var area_HinhTron = hinh_Tron.areaHinhTron();
+		document.write("bán kính = " + get_HinhTron + "<br>" + "Chu vi = " + chu_Vi + "<br>"+ "diện tích = " + area_HinhTron ) ;
+	</script>
+</body>
+</html>

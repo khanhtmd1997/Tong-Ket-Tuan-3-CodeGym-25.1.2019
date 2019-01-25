@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="game" ></div>
+	<div id="game1"></div>
+	<p id="hienthi"></p>
+	<script type="text/javascript">
+		class dongVat{
+			constructor(ten,khoiluong,tocdo,top,left,tiengkeu,image,size){
+				this.ten = ten;
+				this.khoiluong = khoiluong;
+				this.tocdo = tocdo;
+				this.top = top;
+				this.left = left;
+				this.tiengkeu = tiengkeu;
+				this.image = image;
+				this.size = size;
+			}
+		}
+		class Rat extends dongVat{
+			constructor(ten,khoiluong,tocdo,top,left,tiengkeu,image,size,trangthai){
+				super(ten,khoiluong,tocdo,top,left,tiengkeu,image,size);
+				this.trangthai = trangthai;	
+			}
+			getRat(){
+				return '<img width="'+ this.size + '"' +
+		      ' height="'+ this.size + '"' +
+		      ' src="' + this.image +'"' +
+		      ' style="top: '+this.top+'px; left:'+this.left+'px;position:absolute;" />';
+			}
+			isCheck(){
+				if(this.trangthai){
+					return true;
+				}else{
+					return false;
+				}
+			}
+			chuotBiBat(){
+				if(this.trangthai) this.trangthai = false;
+				else this.trangthai = true;
+			}
+			kiemTraRat(){
+		      	if(rat.left <  1300 -rat.size && rat.top ==0){
+		      	this.left +=100;
+		      	//console.log('ok: ' + this.left);
+		    	} 
+		    	else if( rat.top < 500 && rat.left >= 1300 -rat.size){
+		       		this.top +=100;  
+		        	//console.log('ok1: ' + this.top + "left1" + this.left);
+		      
+		        	}else if(rat.left > 0 && rat.top >=500){
+		          		this.left -=100;
+		           		//console.log('ok2: ' + this.top + "left1" + this.left);
+		       	 		}
+		        		else if(rat.left <= 50 && rat.top > 0){
+		          			this.top -=100;
+		          			//console.log('ok3: ' + this.top + "left3" + this.left);
+        				}
+ 				 }
+			}
+		
+		class Cat extends dongVat{
+			constructor(ten,khoiluong,tocdo,top,left,tiengkeu,image,size){
+				super(ten,khoiluong,tocdo,top,left,tiengkeu,image,size);
+			}
+			getCat(){
+				return '<img width="'+ this.size + '"' +
+		      ' height="'+ this.size + '"' +
+		      ' src="' + this.image +'"' +
+		      ' style="top: '+this.top+'px; left:'+this.left+'px;position:absolute;" />';
+			}
+			kiemTraCat(){
+		      	if(cat.left <  1300 -cat.size && cat.top ==0){
+		      	this.left +=90;
+		      	if(cat.left > rat.left || cat.top > rat.top){
+		      		alert("Chuột chết");
+		      		rat.chuotBiBat();
+		      	}
+		      	//console.log('ok: ' + this.left);
+		    	} 
+		    	else if( cat.top < 500 && cat.left >= 1300 -cat.size){
+		       		this.top +=90;  
+		        	//console.log('ok1: ' + this.top + "left1" + this.left);
+		      
+		        	}else if(cat.left > 0 && cat.top >=500){
+		          		this.left -=100;
+		           		//console.log('ok2: ' + this.top + "left1" + this.left);
+		       	 		}
+		        		else if(cat.left <= 50 && cat.top > 0){
+		          			this.top -=90;
+		          			//console.log('ok3: ' + this.top + "left3" + this.left);
+        				}
+ 				 }
+			}
+			
+
+		var rat  = new Rat("Mitkey",10,10,0,100,"Chít,chít","chuot.png",100,true);
+		var cat = new Cat("Mèo",15,30,0,0,"Meow,Meow","meo.jpg",200);
+		function start(){
+			document.getElementById('game').innerHTML = rat.getRat();
+			document.getElementById('game1').innerHTML = cat.getCat();
+			// if(cat.tocdo > rat.tocdo){
+			// 	rat.chuotBiBat();
+			// 	rat.isCheck();
+			// }
+			rat.kiemTraRat();
+			cat.kiemTraCat();
+		}
+		setInterval(start, 100);
+		start();
+	</script>
+</body>
+</html>

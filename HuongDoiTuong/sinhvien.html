@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		var Student = {
+			data : [],
+			viewStudent : function(){
+				//xem danh sach sinh vien
+				//lay danh sach sinh vien
+				var listStudent = this.data;
+				//lap va hien thi sinh vien
+				document.write("<table border=3>");
+				document.write("<tr>" + "<th>" + "Mã SV" + "</th>"
+										  + "<th>" + "Họ Và Tên" + "</th>"
+										  + "<th>" + "Email" + "</th>"
+								+"</tr>");
+				for(var i = 0 ; i < listStudent.length ; i++){
+					document.write("<tr>");
+					document.write("<td>"+listStudent[i].id+"</td>"
+									+"<td>"+listStudent[i].name+"</td>"
+									+"<td>"+listStudent[i].email+"</td>");
+					//document.write("</td>");
+					document.write("</tr>");
+				}
+				document.write("</table>");
+			},
+			addStudent : function(id,name,email){
+				//them sinh vien
+				//tao thong tin sinh vien
+				var item = {
+					id : id,
+					name : name,
+					email : email
+				};
+				//push lên mảng data
+				this.data.push(item);
+			},
+			removeStudent : function(id){
+				//xoa sinh vien
+				for(var i =0; i < this.data.length;i++){
+					if(this.data[i].id === id){
+						//xóa 1 id cần xóa
+						this.data.splice(i,1);
+					}
+				}
+			},
+			editStudent : function(id,name,email){
+				//sua sinh vien
+				for(var i =0;i<this.data.length;i++){
+					if(this.data[i].id === id){
+						this.data[i].name = name;
+						this.data[i].email = email;
+					}
+				}
+			}
+		};
+		document.write('<h4>Danh sách sinh viên ban đầu</h4>');
+		Student.viewStudent();
+ 
+		document.write('<h4>Danh sách sinh viên sau khi thêm hai sinh viên</h4>');
+		Student.addStudent("sv001", 'Nguyễn Văn Cường', "thehalfheart@gmail.com");
+		Student.addStudent("sv002", 'Vũ Thị Thu Tình', "freetuts.net@gmail.com");
+		Student.viewStudent();
+ 
+		document.write('<h4>Danh sách sinh viên sau khi xóa một sinh viên</h4>');
+		Student.removeStudent('sv001');
+		Student.viewStudent();
+		 
+		document.write('<h4>Danh sách sinh viên sau khi sửa thông tin</h4>');
+		Student.editStudent('sv002', "Tên Sinh Viên Mới", "mrcuong.winter@gmail.com");
+		Student.viewStudent();
+	</script>
+
+</body>
+</html>

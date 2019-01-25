@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		class Animal{
+			constructor(branin,legs){
+				this.branin = branin;
+				this.legs = legs;
+			}
+		}
+		class Human extends Animal{
+			constructor(legs){
+				super(legs);
+			}
+		}
+		class Pet extends Aniaml{
+			constructor(legs,fleas){
+				super(legs);
+				this.fleas = fleas;
+			}
+		}
+		class Dog extends Pet{
+			constructor(fleas){
+				super(fleas);
+			}
+		}
+		class Cat extends Pet{
+			constructor(fleas){
+				super(fleas);
+			}
+		}
+	</script>
+</body>
+</html>
